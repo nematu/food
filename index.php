@@ -18,6 +18,35 @@ $f3->route('GET /', function (){
    // echo " My Food Page";
    $view = new Template();
   echo $view->render('views/home.html');
+
+});
+
+// Define an "Breakfast route"
+$f3->route('GET /breakfast', function (){
+    //echo "Breakfast";
+    $view = new Template();
+    echo $view->render('views/breakfast.html');
+});
+
+// Define and " Lunch route"
+$f3->route('GET /lunch', function (){
+    $views = new Template();
+    echo $views->render('views/lunch.html');
+});
+
+$f3->route('GET /breakfast/@item', function ($f3, $params){
+    var_dump($params);
+    $menu = array ('eggs', 'rice' , 'cakes');
+    $item = $params['item'];
+    if(in_array($item, $menu)) {
+        $view = new Templete();
+        echo $view->render("views/breakfast_menu.html");
+    }
+    else{
+        echo " sorry, we don't serve $item";
+    }
+   // $views = new Template();
+   // echo $views->render('views/lunch.html');
 });
 
 // Run fat free
